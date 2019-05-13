@@ -1,0 +1,16 @@
+<h1>Restaurants</h1>
+<% @restaurants.each do |restaurant| %>
+<ul>
+  <li>
+    <%=  link_to restaurant_path(restaurant) do %>
+      <%= restaurant.name %>
+    <% end %>
+    -
+    <%= link_to edit_restaurant_path(restaurant) do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+  </li>
+</ul>
+<% end %>
+
+<%= link_to "Add new restaurant", new_restaurant_path, class: "btn btn-outline-success" %>

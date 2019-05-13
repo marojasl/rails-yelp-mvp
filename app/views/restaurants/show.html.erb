@@ -1,0 +1,45 @@
+<h1>
+  <strong><%= @restaurant.name %></strong>
+</h1>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Food type:</strong>
+  <%= @restaurant.category %>
+</p>
+
+<h2><strong>Reviews</strong></h2>
+
+<p>
+  <% @restaurant.reviews.each do |review| %>
+    <% review.rating.times do |time| %>
+      <i class="fas fa-star"></i>
+    <% end %>
+
+    <% (5 - review.rating).times do |time| %>
+      <i class="far fa-star"></i>
+    <% end %> -
+
+
+    <%= link_to restaurant_review_path(review) do %>
+      <%= review.content %>
+    <% end %>
+  <% end %>
+</p>
+
+
+<%= link_to "Add review", new_restaurant_review_path(@restaurant) %>
+
+<%= link_to edit_restaurant_path(@restaurant) do %>
+    <p>Edit <i class="far fa-edit"></i></p>
+<% end %>
+<%= link_to 'Back', restaurants_path, class: "btn btn-outline-primary" %>

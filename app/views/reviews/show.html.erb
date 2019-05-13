@@ -1,0 +1,21 @@
+<h1>
+  <strong><%= @review.restaurant.name %></strong>
+</h1>
+
+<p>
+  <%= @review.content %>
+</p>
+
+
+<p>
+  <strong>Rating:</strong>
+  <% @review.rating.times do |time| %>
+    <i class="fas fa-star"></i>
+  <% end %>
+
+  <% (5 - @review.rating).times do |time| %>
+    <i class="far fa-star"></i>
+  <% end %>
+</p>
+
+<%=  link_to "Back", restaurant_path(@review.restaurant) %>
